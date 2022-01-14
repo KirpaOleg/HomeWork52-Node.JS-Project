@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>admin</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+    <form>
+      <div class="column">
+        <div><%- studentsListHTML %></div>
+        <div class="button">
+          <div class="btn-create">
+            <a href="http://127.0.0.1:3000/admin/create" class="btn btn3">Добавить</a>
+          </div>         
+        </div>
+      </div>
+      <div class="answer"></div>    
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

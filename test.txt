@@ -1,0 +1,66 @@
+{
+  _id: user _id
+  name: string
+  * surname: string
+  gender: string (enum {male, female})
+  * age: number
+  birdthDate: Date
+  * health: {
+    blood: string (enum {I, II, III, IV})
+    resus: bool
+    width: number
+    weight: number
+  }
+  adress: string
+  * family: {
+    father: {
+      name: string
+      surname: string
+      number: string
+    }
+    mother: {
+      name: string
+      surname: string
+      number: string
+    }
+  }
+  * class: {
+    name: string
+    type: string (enum {math, filology, nature})
+  }
+  education: [
+    {
+      name: math
+      marks: [3, 4, 5, 3]
+    }
+    {
+      name: english
+      marks: [3, 4, 5, 3]
+    }
+  ]
+}
+
+admin panel 
+
+name: string
+surname: string
+gender: string (enum {male, female})
+age: number
+birdthDate: Date
+adress: string
+family: {
+    father: {
+      name: string
+      surname: string
+      number: string
+    }
+    mother: {
+      name: string
+      surname: string
+      number: string
+    }
+  }
+class: {
+    name: string
+    type: string (enum {math, filology, nature})
+  }
