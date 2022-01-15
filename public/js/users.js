@@ -6,7 +6,7 @@ formEl.addEventListener('submit', (event) => {
   const url = window.location.pathname.split('/');
   const data = new FormData(formEl);
   data.set('id', url[2]);
-  axios.post('/create/', data)
+  axios.post('/admin/:id', data)
     .then((r) => {
       answEl.innerHTML = r.data;
     })

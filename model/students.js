@@ -25,9 +25,29 @@ const deleteStudentById = async(id) => {
   await Student.deleteOne({_id: id});
 }
 
+const getStudentById = async (id) => {
+  const student = await Student.find({_id: id});
+}
+
+const updateStudentById = async(data) => {
+  await Student.findOneAndUpdate(
+    {_id: data.id},
+    {
+      name: data.name,
+      surname: data.surname,
+      gender: data.gender,
+      age: data.age,
+      birthDate: data.birthDate,
+      adress: data.adress,
+    }
+  ) 
+ }
+
 module.exports = {
   createStudent,
   getAllStudents,
   deleteStudentById,
+  getStudentById,
+  updateStudentById,
 }
 

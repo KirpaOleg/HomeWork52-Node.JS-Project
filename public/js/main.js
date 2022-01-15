@@ -6,7 +6,7 @@ formEl.addEventListener('submit', (event) => {
   const data = new FormData(formEl);
   console.log(window.location)
   
-  axios.post('/admin', data)
+  axios.post('/admin/create', data)
     .then((r) => {
       answEl.innerHTML = r.data;
     })

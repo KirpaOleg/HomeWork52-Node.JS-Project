@@ -25,7 +25,7 @@ const student = new Schema({
     enum: ['Male', 'Female',],
   },
   age: Number,
-  birthDate: Date,
+  birthDate: String,
   health: {
     blood: {
       type: String,

@@ -2,36 +2,16 @@ const express = require('express');
 const router = express.Router();
 const multer  = require('multer');
 const upload = multer();
-const { createStudent, getAllStudents, deleteStudentById } = require('../model/students')
+const { createStudent, getAllStudents, deleteStudentById, getStudentById, updateStudentById } = require('../model/students');
+const adminStudents = require('../controller/admin')
 
 router.get('/', async (req, res) => {
-  const studentGet = await getAllStudents();
-  const studentsListHTML = studentGet.map(({id, name, surname, gender, birthDate}) => 
-  `<table>
-    <tr>
-      <td>
-        <div class="user">
-          <div class="name">
-          ${name} ${surname} <span class="gender">${gender} </span> 
-          </div> 
-          <div class="birdthDate">
-            ${birthDate}<br>\n
-          </div>
-          <div class="create">
-            <a href="http://127.0.0.1:3000/admin/${id}" class="btn btn3">Изменить</a>
-          </div>
-          <div>
-            <a href="admin/delete/${id}"><div class="delete"></div></a>
-          </div>
-        </div> 
-      </td>
-    </tr>
-  </table>`).join('');
+  const studentsListHTML = await adminStudents.getAllStudents();
   res.render('admin', { studentsListHTML: studentsListHTML });
 });
 
 router.get('/delete/:id', async (req, res, next) => {
-  await deleteStudentById(req.params.id);
+  await adminStudents.deleteStudent(req);
   res.redirect(`http://127.0.0.1:3000/admin`);
 });
 
@@ -40,8 +20,19 @@ router.get('/create', async (req, res, next) => {
 });
 
 router.post('/create', upload.none(), async (req, res, next) => {
-  await createStudent(req.body)
-  res.send(`Hello ${req.body.name}`)
+  await adminStudents.createStudent(req.body);
+  res.send(`Hello ${req.body.name}`);
+});
+
+router.get('/:id', async (req, res, next) => {
+  const student = await getStudentById(req.params.id);
+  res.render('update', {student: student})
+});
+
+router.post('/:id', upload.none(), async (req, res, next) => {
+  await updateStudentById(req.body)
+  console.log(req.body);
+  res.send('ok')
 });
 
 module.exports = router;
