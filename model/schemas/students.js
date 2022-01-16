@@ -29,7 +29,7 @@ const student = new Schema({
   health: {
     blood: {
       type: String,
-      enum: ['I', 'II', 'III',' IV',],
+      enum: ['I', 'II', 'III','IV',],
     },
     resus: Boolean,
     width: Number,

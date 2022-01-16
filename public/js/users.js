@@ -1,5 +1,6 @@
 const formEl = document.querySelector('form');
 const answEl = document.querySelector('.answer');
+const startBtn = document.querySelector('.button-click');
 
 formEl.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -14,4 +15,8 @@ formEl.addEventListener('submit', (event) => {
       console.log(error);
     });
 
+});
+
+startBtn.addEventListener('click', () => {
+  answEl.style.display = 'block';
 });

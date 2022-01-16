@@ -11,41 +11,45 @@
         <table>
           <tr>
             <td>name:</td>
-            <td><input type="text" name="name" required></td>
+            <td><input type="text" name="name" value="<%= student.name %>" required></td>
           </tr>
           <tr>
             <td>surname:</td>
-            <td><input type="text" name="surname" required></td>
+            <td><input type="text" name="surname" value="<%= student.surname %>" required></td>
           </tr>
           <tr>
             <td>gender:</td>
             <td>
               <select name="gender">
+              <option value="<%= student.gender %>"><%= student.gender %></option>
+              <% if (student.gender === 'Male') { %>
+                <option value="Female">Female</option>
+              <% } else { %>
               <option value="Male">Male</option>
-              <option value="Female">Female</option>
+              <% } %>
             </select>
           </td>
           </tr>
           <tr>
             <td>birthDate:</td>
-            <td><input type="date" name="birthDate"></td>
+            <td><input type="date" name="birthDate" value="<%= student.birthDate %>"></td>
           </tr>
           <tr>
             <td>age:</td>
-            <td><input type="number" name="age"></td>
+            <td><input type="number" name="age" value="<%= student.age %>"></td>
           </tr>
           <tr>
             <td>adress:</td>
-            <td> <input type="text" name="adress"></td>
+            <td> <input type="text" name="adress" value="<%= student.adress %>"></td>
           </tr>
         </table>
         <div class="button">
           <div class="btn-ok">
-            <a href="http://127.0.0.1:3000/admin/update">
-              <button type="submit" >OK</button>
+            <a href="/admin/update">
+              <button class="button-click" type="submit" >OK</button>
             </a><br>
             <div class="btn-back">
-              <a href="http://127.0.0.1:3000/admin" class="btn btn3">Back</a>
+              <a href="/admin" class="btn btn3">Back</a>
           </div>
           </div>         
         </div>

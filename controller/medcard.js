@@ -1,6 +1,6 @@
-const { createStudent, getAllStudents, deleteStudentById, getStudentById, updateStudentById } = require('../model/students')
+const { getAllStudents, getStudentById, updateStudentById } = require('../model/students')
 
-const adminStudents = {
+const medcardStudents = {
   getAllStudents: async () => {
     const students = await getAllStudents();
     const studentsListHTML = students.map(({id, name, surname, gender, birthDate}) => 
@@ -15,10 +15,7 @@ const adminStudents = {
               ${birthDate}<br>\n
             </div>
             <div class="create">
-              <a href="/admin/${id}" class="btn btn3">Изменить</a>
-            </div>
-            <div>
-              <a href="admin/delete/${id}"><div class="delete"></div></a>
+              <a href="/medcard/${id}" class="btn btn3">Изменить</a>
             </div>
           </div> 
         </td>
@@ -26,12 +23,7 @@ const adminStudents = {
     </table>`).join('');
     return studentsListHTML;
   },
-  deleteStudent: async (req) => {
-    await deleteStudentById(req.params.id);
-  },
-  createStudent: async (obj) => {
-    await createStudent(obj);
-  },
+
   getStudentById: async (id) => {
     return await getStudentById(id);
   },
@@ -40,4 +32,4 @@ const adminStudents = {
   }
 }
 
-module.exports = adminStudents;
+module.exports = medcardStudents;

@@ -4,10 +4,10 @@ const startBtn = document.querySelector('.button-click');
 
 formEl.addEventListener('submit', (event) => {
   event.preventDefault();
+  const url = window.location.pathname.split('/');
   const data = new FormData(formEl);
-  console.log(window.location)
-  
-  axios.post('/admin/create', data)
+  data.set('id', url[2]);
+  axios.post('/medcard/:id', data)
     .then((r) => {
       answEl.innerHTML = r.data;
     })
